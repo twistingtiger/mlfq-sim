@@ -39,13 +39,13 @@ class TestProcessControlBlock:
         # time is less than the time when the process was last executed.
         with pytest.raises(ProcessControlBlock.ExecutionRecordingException) as ee_info:
             self.pcb.execute(11, 6)
-        
+
         with pytest.raises(ProcessControlBlock.ExecutionRecordingException) as ee_info:
             self.pcb.execute(12, 6)
 
         with pytest.raises(ProcessControlBlock.ExecutionRecordingException) as ee_info:
             self.pcb.execute(13, 5)
-        
+
         assert self.pcb.get_remaining_time() == 6
 
         execution_history_item = self.pcb.get_execution_history()[0]
